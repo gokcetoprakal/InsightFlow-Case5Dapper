@@ -1,0 +1,42 @@
+﻿@using InsightFlow.Dtos
+@model DashboardStatsDto
+@*Default Overview*@
+
+<section class="space-y-stack-lg" id="overview">
+    <h2 class="font-h1 text-h1 text-primary">Overview</h2>
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-gutter">
+        <!-- KPI Card 1 -->
+        <div class="glass-card rounded-card p-stack-lg flex flex-col justify-between">
+            <div>
+                <span class="font-label-caps text-label-caps text-on-surface-variant">TOTAL SCREEN TIME</span>
+                <div class="font-stats-display text-stats-display text-primary mt-unit">@ViewBag.TotalScreenTime hours</div>
+            </div>
+            <div class="flex items-center gap-1 text-error mt-stack-md">
+                <span class="material-symbols-outlined text-[18px]">trending_up</span>
+                <span class="font-body-md">+12% from yesterday</span>
+            </div>
+        </div>
+        <!-- KPI Card 2 -->
+        <div class="glass-card rounded-card p-stack-lg flex flex-col justify-between">
+            <div>
+                <span class="font-label-caps text-label-caps text-on-surface-variant">ACTIVE USERS</span>
+                <div class="font-stats-display text-stats-display text-primary mt-unit">@Model.ActiveUsers</div>
+            </div>
+            <div class="flex items-center gap-1 text-primary mt-stack-md">
+                <span class="material-symbols-outlined text-[18px]">trending_up</span>
+                <span class="font-body-md">+5.2% vs avg</span>
+            </div>
+        </div>
+        <!-- KPI Card 3 -->
+        <div class="glass-card rounded-card p-stack-lg flex flex-col justify-between">
+            <div>
+                <span class="font-label-caps text-label-caps text-on-surface-variant">AVG PRODUCTIVITY SCORE</span>
+                <div class="font-stats-display text-stats-display text-primary mt-unit">@Model.AvgProductivityScore %</div>
+            </div>
+            <div class="flex items-center gap-1 text-primary mt-stack-md">
+                <span class="material-symbols-outlined text-[18px]">trending_up</span>
+                <span class="font-body-md">+3% improvement</span>
+            </div>
+        </div>
+    </div>
+</section>

@@ -1,0 +1,32 @@
+﻿@using InsightFlow.Dtos
+@model List<UserTitleSleepDto>
+@*Avg Sleep Hours*@
+
+<div class="glass-card rounded-card p-8 space-y-6 bg-white/5 backdrop-blur-lg border border-white/10 shadow-2xl">
+    <h3 class="text-2xl font-black text-slate-950 tracking-tight">Sleep Analysis per User Type</h3>
+
+    <div class="space-y-6 mt-4">
+        @foreach (var item in Model)
+        {
+            <div class="flex items-center gap-6 group">
+                @* Unvan - Keskin Siyah *@
+                <span class="w-32 text-sm font-black text-slate-900 uppercase tracking-tighter group-hover:text-indigo-600 transition-colors">
+                    @item.UserTitle
+                </span>
+
+                @* Bar Kapsayıcı *@
+                <div class="flex-1 h-8 bg-slate-900/10 rounded-lg overflow-hidden flex relative">
+                    @* Uyku Barı - Indigo/Deep Blue tonu (veya #6366f1) *@
+                    <div class="h-full bg-indigo-600 flex items-center px-3 transition-all duration-700 ease-out shadow-inner"
+                         style="width: @item.BarWidthPercentage.ToString("0", System.Globalization.CultureInfo.InvariantCulture)%; background-color: #4f46e5;">
+
+                        @* Bar İçindeki Uyku Saati *@
+                        <span class="text-[10px] font-black text-white uppercase tracking-widest whitespace-nowrap">
+                            @item.AvgSleepHours.ToString("0.1")H SLEEP
+                        </span>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+</div>

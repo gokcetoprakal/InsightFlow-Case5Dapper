@@ -1,0 +1,46 @@
+﻿@using InsightFlow.Dtos
+@model IEnumerable<RiskUserDto>
+@*Default Risk Analysis*@
+
+<section class="glass-card rounded-card overflow-hidden shadow-2xl border border-white/10" id="risk-analysis">
+    <div class="p-8 border-b border-white/10 flex justify-between items-center bg-white/5">
+        <h3 class="text-2xl font-black text-slate-950 tracking-tight">Low Productivity Users</h3>
+        <button class="bg-slate-950 text-white px-6 py-2 rounded-full font-black hover:bg-primary transition-all active:scale-95 text-xs uppercase tracking-widest">
+            View All Risks
+        </button>
+    </div>
+    <div class="overflow-x-auto">
+        <table class="w-full text-left border-collapse">
+            <thead class="bg-slate-950 text-white font-black uppercase text-[10px] tracking-widest">
+                <tr>
+                    <th class="px-8 py-4">User</th>
+                    <th class="px-8 py-4 text-center">Productivity Score</th>
+                    <th class="px-8 py-4 text-center">Avg Sleep Hours</th>
+                    <th class="px-8 py-4">Most Using App</th>
+                </tr>
+            </thead>
+            <tbody class="divide-y divide-white/10 bg-white/5">
+                @foreach (var user in Model)
+                {
+                    <tr class="hover:bg-white/10 transition-colors group">
+                        <td class="px-8 py-5">
+                            <span class="font-black text-slate-900 group-hover:text-primary transition-colors">@user.UserName</span>
+                        </td>
+                        <td class="px-8 py-5 text-center">
+                            @* Skor düşük olduğu için kırmızı/rose tonu yakışır *@
+                            <span class="px-3 py-1 rounded-full bg-rose-500/10 text-rose-600 font-black text-xs">
+                                %@user.ProductivityScore.ToString("0")
+                            </span>
+                        </td>
+                        <td class="px-8 py-5 text-center">
+                            <span class="font-bold text-slate-600">@user.AvgSleepHours.ToString("0.0")h</span>
+                        </td>
+                        <td class="px-8 py-5">
+                            <span class="text-xs font-black text-slate-950 uppercase tracking-tighter">@user.MostUsedApp</span>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</section>

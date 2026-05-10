@@ -1,0 +1,43 @@
+﻿@{Layout = null;}
+
+<!DOCTYPE html>
+
+<html class="light" lang="en">
+@await Component.InvokeAsync("_DefaultHead")
+<body class="bg-background text-on-surface font-body-md">
+    <!-- TopNavBar -->
+    @await Component.InvokeAsync("_DefaultNavbar")
+    <main class="max-w-container-max mx-auto px-margin py-stack-lg space-y-12">
+        @await Component.InvokeAsync("_DefaultBanner")
+        <!-- Section 1: Overview  TAMAM -->
+        @await Component.InvokeAsync("_DefaultOverview") 
+        <!-- Section 2: Trends & Category (Grid Layout) -->
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-gutter">
+            <!--Bar Chart TAMAM -->
+            @await Component.InvokeAsync("_DefaultBarChart")
+            <!--Pie Chart TAMAM -->
+            @await Component.InvokeAsync("_DefaultPieChart")
+        </div>
+        <!-- Section 3: Apps & Insights -->
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-gutter">
+            <!--App Usage-->
+            @await Component.InvokeAsync("_DefaultAppUsage")
+            <!--Key Insights-->
+            @await Component.InvokeAsync("_DefaultKeyInsights")
+        </div>
+        <!-- Section 4: Risk Analysis -->
+        @await Component.InvokeAsync("_DefaultRiskAnalysis")
+        <!-- Section 5: Users Averages -->
+        <section class="space-y-stack-lg" id="users">
+            <h2 class="font-h1 text-h1 text-primary">User Analytics Averages</h2>
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-gutter">
+                <!-- Productivity Scatter Plot Mock -->
+                @await Component.InvokeAsync("_DefaultAvgScreenTime")
+                <!-- Avg Screen Time Bar Charts -->
+                @await Component.InvokeAsync("_DefaultAvgSleepHour")
+            </div>
+        </section>
+    </main>
+    @await Component.InvokeAsync("_DefaultFooter")
+</body>
+</html>

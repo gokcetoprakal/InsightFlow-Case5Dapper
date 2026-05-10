@@ -1,0 +1,26 @@
+﻿@using InsightFlow.Dtos
+@model List<KeyInsightDto>
+@*Default Key Insights*@
+
+<section class="space-y-6" id="insights">
+    <h3 class="text-2xl font-black text-slate-950 tracking-tight">Key Insights</h3>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        @foreach (var item in Model)
+        {
+            <div class="glass-card rounded-card p-6 flex gap-4 items-start bg-white/5 border border-white/10 shadow-xl transition-transform hover:scale-[1.02]">
+                @* Dinamik İkon Kutusu *@
+                <div class="@item.BgClass @item.ColorClass p-3 rounded-xl flex items-center justify-center">
+                    <span class="material-symbols-outlined">@item.Icon</span>
+                </div>
+
+                <div>
+                    @* Siyah Başlık *@
+                    <p class="font-black text-slate-900 text-lg leading-tight">@item.Title</p>
+                    @* Gri/Siyah Açıklama *@
+                    <p class="text-slate-600 text-sm font-bold mt-1">@item.Description</p>
+                </div>
+            </div>
+        }
+    </div>
+</section>
